@@ -195,7 +195,14 @@ ICMP is a network-level protocol that sends error messages b/t devices on the in
 
 Ping allows us to know if two different devices on a network can communicate with each other.
 
+ping 10.0.0.5
 
+Hopefully, there is 0% loss
+
+![ping 10 0 0 5](https://github.com/user-attachments/assets/3b6a5e6f-fb30-4bfe-9bb9-dd7c47d068b3)
+
+
+   
 
 
 
@@ -203,7 +210,32 @@ Ping allows us to know if two different devices on a network can communicate wit
 
 You will see a "request" from the windows-vm private ip address and a reply from the linux-vm private ip address.
 
-ping 10.0.0.5
+
+![ping convo](https://github.com/user-attachments/assets/d5017dcf-eb2b-4d35-a91c-85d9b4f017b4)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
