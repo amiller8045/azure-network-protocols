@@ -36,7 +36,7 @@ In this tutorial, we will observe various network traffic to and from Azure Virt
 <h2>Actions and Observations</h2>
 
 
-1) Create Windows 10 VM
+**1) Create Windows 10 VM**
 
    **Sign in to Azure and create a Resource Group.**
 
@@ -83,7 +83,7 @@ In this tutorial, we will observe various network traffic to and from Azure Virt
 
 <p>
 
-2) Create Liux VM
+**2) Create Liux VM**
 
   **Must have the same Resource Group and Region / Name: linux-vm / Image: Ubunutu Server 22 or 24**
 <p>
@@ -112,9 +112,143 @@ In this tutorial, we will observe various network traffic to and from Azure Virt
 
 
   
+**3) Observe ICMP Traffic**
+
+
+   **Attain the windows-vm public IP address from Azure.**
+
+
+![windows ip](https://github.com/user-attachments/assets/6d9b989c-d016-488f-a629-6c78de6f3d2f)
+
+
+   **Use Remote Desktop Connection to connect to virtual machine.**
+
+
+   ![rdp](https://github.com/user-attachments/assets/de72703b-0c90-494c-89c5-e9e75eb6eb0e)
+
+
+
+   **Within your Windows 10 Virtual Machine, Install Wireshark
+   
+This will allow us to view all the network traffic that is occurring.
+   https://www.wireshark.org
+   
+
+  ![open wireshark](https://github.com/user-attachments/assets/22abebf8-1be8-435b-849a-154883e13c52)
+
+![wireshark](https://github.com/user-attachments/assets/a51ae46a-797b-439d-ba79-dc34bdfde539)
+
+
+
+  **Choose Windows 64 Installer**        **Run and Finish Wireshark install**
+
+
+![64 windows](https://github.com/user-attachments/assets/9639f355-56ee-4bc1-8734-61c83d4db5ee)
+
+
+
+
+
+
+
+**Open Wireshark and start packet capture**
+
+A packet is a small unit of data transmitted over a network.
+
+A packet capture is a networking technique that involves intercepting and recording data packets that are traveling across a network.
+
+
+![image](https://github.com/user-attachments/assets/f863744f-244a-46de-9e30-71fb684ec237)
+
+
+
+
+You will see a flow of traffic in wireshark
+
+
+![capture](https://github.com/user-attachments/assets/9fc4b300-6b78-4e17-9980-3c7f432d56cb)
+
+
+
+
+
+**Within Wireshark, filter for ICMP traffic only**
+
+ICMP is a network-level protocol that sends error messages b/t devices on the internet, using command line "ping".
+
+
+
+![icmp no traffic](https://github.com/user-attachments/assets/b22d9367-9af1-4d3c-af66-a3aab96346dc)
+
+
+
+
+
+
+**Retrieve the private IP address of the linux-vm.** 
+
+![linux private ip](https://github.com/user-attachments/assets/9226d4e5-87ed-414f-b198-3c29ff0b4460)
+
+
+
+**Attempt to ping the linux-vm from within the Windows 10 VM in Powershell**
+
+Ping allows us to know if two different devices on a network can communicate with each other.
+
+
+
+
+
+**Observe ping requests and replies within WireShark**
+
+You will see a "request" from the windows-vm private ip address and a reply from the linux-vm private ip address.
+
+ping 10.0.0.5
+
+
+
+
+
+
+**From The Windows 10 VM, open command line or PowerShell and attempt to ping a public website (such as www.youtube.com)**
+
+ping youtube.com
+
+
+
+
+**observe the traffic in WireShark**
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
   
+
 
   
   
