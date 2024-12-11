@@ -114,6 +114,7 @@ In this tutorial, we will observe various network traffic to and from Azure Virt
   
 **3) Observe ICMP Traffic**
 
+Internet Control Message Protocol (ICMP) traffic is a network-level protocol that sends error messages and operational information between devices on the Internet,
 
    - Attain the windows-vm public IP address from Azure.**
 
@@ -121,7 +122,7 @@ In this tutorial, we will observe various network traffic to and from Azure Virt
 ![windows ip](https://github.com/user-attachments/assets/6d9b989c-d016-488f-a629-6c78de6f3d2f)
 
 
-   - Use Remote Desktop Connection to connect to virtual machine.**
+   - Use Remote Desktop Connection to connect to the virtual machine.**
 
 
    ![rdp](https://github.com/user-attachments/assets/de72703b-0c90-494c-89c5-e9e75eb6eb0e)
@@ -232,6 +233,8 @@ You will notice the non-stop ping on Wireshark in the background.
 
 **4) Configure linux-vm Firewall (Network Security Group)**
 
+A firewall is a network security system that monitors and controls incoming and outgoing network traffic.
+
 - Disable incoming ICMP Traffic
 
 **Networking -> Network Settings -> Network Security Group: linux-vm-nsg -> Settings -> Inbound Security Rules -> Add** 
@@ -302,7 +305,7 @@ Powershell will return to an empty command line.
 
 **5) Observe SSH Traffic)**
 
-**SSH, or Secure Shell, is a network protocol that allows two computers to communicate securely over an unsecured network.**
+SSH, or Secure Shell, is a network protocol that allows two computers to communicate securely over an unsecured network.**
 
 - Log back into the windows-vm
 
@@ -387,6 +390,57 @@ Now you can Enter commands for that computer such as:
 
 
 **6) Observe DHCP Traffic**
+
+Dynamic Host Configuration Protocol (DHCP) is a network management protocol that automatically assigns IP addresses and other communication parameters to devices on a network using UDP ports 67 and 68.
+
+UDP port 67 is used by DHCP servers to listen for messages from DHCP clients
+
+UDP port 68 is used by DHCP clients to send messages to DHCP servers.
+
+
+- In Wireshark, filter for DHCP traffic only. Type "DHCP"
+
+- Open Powershell as admin and run "ipconfig /renew"
+
+![powershell admin](https://github.com/user-attachments/assets/47617c4e-da30-42d9-9e8e-cd458566df00)
+
+
+- Observe the DHCP traffic in Wireshark and take note of new ip address. In our case it will be the same as it was before but in Wireshark you will see a request from our windows-vm and an acknowledgement from the DHCP server.
+
+  
+![image](https://github.com/user-attachments/assets/c715dbdf-d787-46b4-b4be-db5ee7e7378d)
+
+  
+
+**7) Observe DNS Traffic**
+
+DNS, or the Domain Name System, translates human-readable domain names  to machine-readable IP addresses.
+
+- Restart capture
+
+  ![restart](https://github.com/user-attachments/assets/4ed8c5be-a974-4259-a84b-40dc5ddbf386)
+
+
+- Filter for DNS traffic
+
+- In Powershell, issue the command "nslookup disney.com".
+
+
+  Notice the ip address it gives you.
+
+  Take note of the DNS traffic in Wireshark
+
+
+
+![nslookup](https://github.com/user-attachments/assets/d2f34463-960b-4ad2-a084-67bbb9f15a8f)
+
+
+
+- Type the ip address in a web browser and see where it leads you.
+
+Looks like it is associated with Disney
+
+![disney](https://github.com/user-attachments/assets/7d915a49-2f2f-4dc0-bff7-3b615b211a98)
 
 
 
