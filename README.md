@@ -2,7 +2,7 @@
 <img src="https://i.imgur.com/Ua7udoS.png" alt="Traffic Examination"/>
 </p>
 
-<h1>Network Security Groups (NSGs) and Inspecting Traffic Between Azure Virtual Machines</h1>
+<h1>Network Security Groups (NSGs) and Inspecting Traffic Between Azure Virtual Machines 1 of 2</h1>
 In this tutorial, we will observe various network traffic to and from Azure Virtual Machines with Wireshark and experiment with Network Security Groups. <br />
 
 
@@ -261,94 +261,36 @@ Set the priority at a lower number than other rules so this will take precedence
 
 
 
+**Back in Powershell press enter and look for "Request Timed Out".**
+
+**Back in Wireshark now you will only see request from the windows-vm.**
+
+Since we stopped all incoming ICMP traffic for the linux-vm, our windows-vm can't ping it.
 
 
+![ping stop](https://github.com/user-attachments/assets/37b12538-2268-49a9-ab50-99c66ffc3cb5)
 
 
+**Re-enable ICMP Traffic for linux-vm.**
+
+**Simply delete the new rule we create for ICMP**
+
+![image](https://github.com/user-attachments/assets/ee7b6882-8769-4eea-9cc9-0dccd34c72b3)
+
+**Back in the Windows 10 VM, observe the ICMP traffic in WireShark and the command line Ping activity (should start working)**
+
+Once Azure resource manager recognizes the rule has been deleted, the traffic will resume.
+
+![ping return](https://github.com/user-attachments/assets/396892e1-007d-4b59-b380-6acec49831a2)
 
 
+**Stop Ping**
+
+Control + C
 
 
+**This is the end of the first 1/2 of this lab**
+**We will continue the rest of the lab on the next repository**
 
 
-
-
-
-
-
-
-**From The Windows 10 VM, open command line or PowerShell and attempt to ping a public website (such as www.youtube.com)**
-
-ping youtube.com
-
-
-
-
-**observe the traffic in WireShark**
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  
-
-
-  
-  
-
-
-  
-  
-
-  
-   
-   
-
-   
-<p>
-<img src="https://i.imgur.com/DJmEXEB.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
-</p>
-<p>
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-</p>
-<br />
-
-<p>
-<img src="https://i.imgur.com/DJmEXEB.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
-</p>
-<p>
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-</p>
-<br />
-
-<p>
-<img src="https://i.imgur.com/DJmEXEB.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
-</p>
-<p>
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-</p>
 <br />
