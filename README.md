@@ -303,7 +303,7 @@ Powershell will return to an empty command line.
 
 
 
-**5) Observe SSH Traffic)**
+**5) Observe SSH Traffic**
 
 SSH, or Secure Shell, is a network protocol that allows two computers to communicate securely over an unsecured network.**
 
@@ -402,7 +402,7 @@ UDP port 68 is used by DHCP clients to send messages to DHCP servers.
 
 - Open Powershell as admin and run "ipconfig /renew"
 
-![powershell admin](https://github.com/user-attachments/assets/47617c4e-da30-42d9-9e8e-cd458566df00)
+![powershell admin](https://github.com/user-attachments/assets/ac905752-8be6-4a27-9cd1-bb127f804b3a)
 
 
 - Observe the DHCP traffic in Wireshark and take note of new ip address. In our case it will be the same as it was before but in Wireshark you will see a request from our windows-vm and an acknowledgement from the DHCP server.
@@ -438,9 +438,37 @@ DNS, or the Domain Name System, translates human-readable domain names  to machi
 
 - Type the ip address in a web browser and see where it leads you.
 
-Looks like it is associated with Disney
+It looks like it is associated with Disney but the web browser can only accept human-readable names and then those names are converted to ip addresses by the DNS server.
 
-![disney](https://github.com/user-attachments/assets/7d915a49-2f2f-4dc0-bff7-3b615b211a98)
+![disney](https://github.com/user-attachments/assets/848a5794-4d4f-42d5-9e37-f5a820fbf8e8)
+
+
+**8) Observe RDP Traffic**
+
+RDP stands for Remote Desktop Protocol, a secure network communication protocol that allows users to remotely control and operate  computers.   
+
+TCP Port 3389
+
+- Filter RDP traffic
+-
+- Must type "tcp.port==3389"
+
+- Observe the non-stop spam
+
+Since RDP constantly shows you a live stream from one computer to another, traffic is always transmitted. 
+  
+![rdp traffic](https://github.com/user-attachments/assets/664f71b3-11b5-42c2-8594-4bf6d0ce6115)
+
+
+
+**Congrats! You have now configured Network Security Groups in Azure, issued commands through Powershell and observed data traffic via Wireshark!** 
+
+**Make sure to delete the Resource Groups in Azure and disconnect from Remote Desktop.**
+
+
+
+
+
 
 
 
