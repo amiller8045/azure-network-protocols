@@ -438,9 +438,11 @@ DNS, or the Domain Name System, translates human-readable domain names  to machi
 
 - Type the ip address in a web browser and see where it leads you.
 
-It looks like it is associated with Disney but the web browser can only accept human-readable names and then those names are converted to ip addresses by the DNS server.
+It looks like it is associated with Disney since we see the logo on the web browser tab and well-known Disney cartoon characters. 
 
-![disney](https://github.com/user-attachments/assets/848a5794-4d4f-42d5-9e37-f5a820fbf8e8)
+- However, the web browser can only accept human-readable names and then those names are converted to ip addresses by the DNS server.
+
+![disney](https://github.com/user-attachments/assets/d795d6d9-4a1b-4e50-9f58-4810a35fd21d)
 
 
 **8) Observe RDP Traffic**
