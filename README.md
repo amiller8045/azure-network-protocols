@@ -214,15 +214,50 @@ You will see a "request" from the windows-vm private ip address and a reply from
 ![ping convo](https://github.com/user-attachments/assets/d5017dcf-eb2b-4d35-a91c-85d9b4f017b4)
 
 
+**Let's start a non-stop ping to the linux-vm using "ping 10.0.0.5 -t"**
+
+-t means ping forever
+
+You will notice the non-stop ping on Wireshark in the background.
+
+![image](https://github.com/user-attachments/assets/cd7fb729-ae43-4c48-b454-4cbe04464150)
 
 
 
+**Configure linux-vm Firewall (Network Security Group)**
+
+Disable incoming ICMP Traffic
+
+**Networking -> Network Settings -> Network Security Group: linux-vm-nsg -> Settings -> Inbound Security Rules -> Add** 
+
+![linux secur](https://github.com/user-attachments/assets/f98b32e2-b6c8-48a2-801e-089c20845b68)
+
+![add rule](https://github.com/user-attachments/assets/a40cd3ac-0b00-460b-9c8b-6dae202d29be)
 
 
 
+Source and Destination should be Any. Destination meaning linux-vm, source meaning any other device.
+
+Port will just be the star symbol (*) because IMCP doesn't use a port.
+
+The Protocol will be ICMPv4 since it doesn't use UDP or TCP.
+
+The Action is to "Deny" pings from coming in.
+
+Set the priority at a lower number than other rules so this will take precedence. Then Save.
+
+![add rule](https://github.com/user-attachments/assets/104d55a6-0bea-4d97-825e-5a9ab7215c26)
 
 
+![5 rule](https://github.com/user-attachments/assets/ff63a9d0-81fb-4f82-b4d1-f5238675eca9)
 
+
+![1 rule](https://github.com/user-attachments/assets/bfb20be2-67c3-469c-a5a8-ac2f2324610e)
+
+
+**New Rule**
+
+![image](https://github.com/user-attachments/assets/419577d2-c2bf-4370-8e90-4dbd1f641433)
 
 
 
