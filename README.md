@@ -2,7 +2,7 @@
 <img src="https://i.imgur.com/Ua7udoS.png" alt="Traffic Examination"/>
 </p>
 
-<h1>Network Security Groups (NSGs) and Inspecting Traffic Between Azure Virtual Machines 1 of 2</h1>
+<h1>Network Security Groups (NSGs) and Inspecting Traffic Between Azure Virtual Machines</h1>
 In this tutorial, we will observe various network traffic to and from Azure Virtual Machines with Wireshark and experiment with Network Security Groups. <br />
 
 
@@ -23,8 +23,8 @@ In this tutorial, we will observe various network traffic to and from Azure Virt
 
 <h2>High-Level Steps</h2>
 
-1) Create Windows 10 VM
-2) Create Linux VM
+1) Create a Windows 10 VM
+2) Create a Linux VM
 3) Observe ICMP Traffic
 4) Configure a Firewall (Network Security Group)
 5) Observe SSH Traffic
@@ -38,28 +38,28 @@ In this tutorial, we will observe various network traffic to and from Azure Virt
 
 **1) Create Windows 10 VM**
 
-   **Sign in to Azure and create a Resource Group.**
+   - Sign in to Azure and create a Resource Group.**
 
 
    
 ![Create](https://github.com/user-attachments/assets/aef9f6f7-b496-458c-927f-6b6f1925b0cc)
 
 
-  **Create a Windows 10 Virtual Machine.**
+- Create a Windows 10 Virtual Machine.**
 
 ![RG](https://github.com/user-attachments/assets/fe02cd99-d76d-4f81-8411-9859c59a8531)
 
    
 <p>
 
-   **Name: windows-vm / Image: Windows 10 Pro / Region: Same as Resource Group**
+   - Name: windows-vm / Image: Windows 10 Pro / Region: Same as Resource Group**
 
 ![windows spec 1](https://github.com/user-attachments/assets/62b79e26-d3aa-4a98-9a15-1c07a4c5d2a8)
 
 <p>
 
    
-   **Size: 2 vcpus with 8 gb of memory / Create a username and password / Check Licensing field / Click Next twice.**
+   - Size: 2 VCPUs with 8 GB of memory / Create a username and password / Check Licensing field / Click Next twice.**
 
    
 ![Windows spec 2](https://github.com/user-attachments/assets/48282fec-aeb3-47f2-a6aa-8796b3078ce6)
@@ -67,14 +67,14 @@ In this tutorial, we will observe various network traffic to and from Azure Virt
 
    <p>
 
-  **"Create new"  Virtual Network, if it doesn't automatically. Click OK and Review then Review and Create.**
+  - "Create New"  Virtual Network, if it doesn't automatically. Click OK and Review then Review and Create.**
 
 ![create new](https://github.com/user-attachments/assets/86d7e77d-29db-4272-bbdf-560c59120e92)
 
   <p>
 
   
-  **The next screen should say "validation passed". Notice hourly subscription cost. Then click Create.**
+  - The next screen should say "validation passed". Notice hourly subscription cost. Then click Create.**
 
 
 ![validation](https://github.com/user-attachments/assets/a4b691fa-d3c1-49f7-bd24-f6a736cdde46)
@@ -83,9 +83,9 @@ In this tutorial, we will observe various network traffic to and from Azure Virt
 
 <p>
 
-**2) Create Liux VM**
+**2) Create Linux VM**
 
-  **Must have the same Resource Group and Region / Name: linux-vm / Image: Ubunutu Server 22 or 24**
+  - Must have the same Resource Group and Region / Name: linux-vm / Image: Ubuntu Server 22 or 24**
 <p>
 
 
@@ -93,13 +93,13 @@ In this tutorial, we will observe various network traffic to and from Azure Virt
 
    <p>
 
-  **Same size and username/password as windows-vm, Click Next twice.**
+  - Same size and username/password as windows-vm, Click Next twice.**
 
 ![linux 2](https://github.com/user-attachments/assets/3071a14e-d501-472b-a64e-49050d9d083d)
 
 <p>
 
-  **Same Virtual Network as windows-vm. Review + Create**
+  - Same Virtual Network as windows-vm. Review + Create**
 
   
 
@@ -115,20 +115,20 @@ In this tutorial, we will observe various network traffic to and from Azure Virt
 **3) Observe ICMP Traffic**
 
 
-   **Attain the windows-vm public IP address from Azure.**
+   - Attain the windows-vm public IP address from Azure.**
 
 
 ![windows ip](https://github.com/user-attachments/assets/6d9b989c-d016-488f-a629-6c78de6f3d2f)
 
 
-   **Use Remote Desktop Connection to connect to virtual machine.**
+   - Use Remote Desktop Connection to connect to virtual machine.**
 
 
    ![rdp](https://github.com/user-attachments/assets/de72703b-0c90-494c-89c5-e9e75eb6eb0e)
 
 
 
-   **Within your Windows 10 Virtual Machine, Install Wireshark
+   - Within your Windows 10 Virtual Machine, Install Wireshark
    
 This will allow us to view all the network traffic that is occurring.
    https://www.wireshark.org
@@ -136,26 +136,25 @@ This will allow us to view all the network traffic that is occurring.
 
   ![open wireshark](https://github.com/user-attachments/assets/22abebf8-1be8-435b-849a-154883e13c52)
 
-![wireshark](https://github.com/user-attachments/assets/a51ae46a-797b-439d-ba79-dc34bdfde539)
 
 
 
-  **Choose Windows 64 Installer**        **Run and Finish Wireshark install**
+  - Choose Windows 64 Installer**        - Run and Finish Wireshark install**
 
 
-![64 windows](https://github.com/user-attachments/assets/9639f355-56ee-4bc1-8734-61c83d4db5ee)
-
-
-
+![64 windows](https://github.com/user-attachments/assets/f7f49c0f-1c8b-4241-ae17-76ff250261e4)
 
 
 
 
-**Open Wireshark and start packet capture**
+
+
+
+- Open Wireshark and start packet capture**
 
 A packet is a small unit of data transmitted over a network.
 
-A packet capture is a networking technique that involves intercepting and recording data packets that are traveling across a network.
+Packet capture is a networking technique that intercepts and records data packets traveling across a network.
 
 
 ![image](https://github.com/user-attachments/assets/f863744f-244a-46de-9e30-71fb684ec237)
@@ -163,7 +162,7 @@ A packet capture is a networking technique that involves intercepting and record
 
 
 
-You will see a flow of traffic in wireshark
+- You will see a flow of traffic in Wireshark.
 
 
 ![capture](https://github.com/user-attachments/assets/9fc4b300-6b78-4e17-9980-3c7f432d56cb)
@@ -172,7 +171,7 @@ You will see a flow of traffic in wireshark
 
 
 
-**Within Wireshark, filter for ICMP traffic only**
+- Within Wireshark, filter for ICMP traffic only**
 
 ICMP is a network-level protocol that sends error messages b/t devices on the internet, using command line "ping".
 
@@ -185,19 +184,26 @@ ICMP is a network-level protocol that sends error messages b/t devices on the in
 
 
 
-**Retrieve the private IP address of the linux-vm.** 
+- Retrieve the private IP address of the linux-vm.** 
 
 ![linux private ip](https://github.com/user-attachments/assets/9226d4e5-87ed-414f-b198-3c29ff0b4460)
 
 
 
-**Attempt to ping the linux-vm from within the Windows 10 VM in Powershell**
+- Attempt to ping the linux-vm from within the Windows 10 VM in Powershell**
 
 Ping allows us to know if two different devices on a network can communicate with each other.
 
-ping 10.0.0.5
+- Open Powershell
 
-Hopefully, there is 0% loss
+![powershell](https://github.com/user-attachments/assets/706f6ca2-c0df-4d1e-8a54-a6b20f90fea2)
+
+
+- ping 10.0.0.5
+
+- Type "ping 10.0.0.5" and press Enter.
+
+Hopefully, there will be a 0% loss
 
 ![ping 10 0 0 5](https://github.com/user-attachments/assets/3b6a5e6f-fb30-4bfe-9bb9-dd7c47d068b3)
 
@@ -206,7 +212,7 @@ Hopefully, there is 0% loss
 
 
 
-**Observe ping requests and replies within WireShark**
+- Observe ping requests and replies within WireShark**
 
 You will see a "request" from the windows-vm private ip address and a reply from the linux-vm private ip address.
 
@@ -214,7 +220,7 @@ You will see a "request" from the windows-vm private ip address and a reply from
 ![ping convo](https://github.com/user-attachments/assets/d5017dcf-eb2b-4d35-a91c-85d9b4f017b4)
 
 
-**Let's start a non-stop ping to the linux-vm using "ping 10.0.0.5 -t"**
+- Let's start a non-stop ping to the linux-vm using "ping 10.0.0.5 -t" and press Enter.**
 
 -t means ping forever
 
@@ -224,9 +230,9 @@ You will notice the non-stop ping on Wireshark in the background.
 
 
 
-**Configure linux-vm Firewall (Network Security Group)**
+**4) Configure linux-vm Firewall (Network Security Group)**
 
-Disable incoming ICMP Traffic
+- Disable incoming ICMP Traffic
 
 **Networking -> Network Settings -> Network Security Group: linux-vm-nsg -> Settings -> Inbound Security Rules -> Add** 
 
@@ -236,15 +242,15 @@ Disable incoming ICMP Traffic
 
 
 
-Source and Destination should be Any. Destination meaning linux-vm, source meaning any other device.
+- Source and Destination should be Any. Destination means linux-vm, and source means any other device.
 
-Port will just be the star symbol (*) because IMCP doesn't use a port.
+- Port will just be the star symbol (*) because IMCP doesn't use a port.
 
-The Protocol will be ICMPv4 since it doesn't use UDP or TCP.
+- The Protocol will be ICMPv4 since it doesn't use UDP or TCP.
 
-The Action is to "Deny" pings from coming in.
+- The Action is to "Deny" pings from coming in.
 
-Set the priority at a lower number than other rules so this will take precedence. Then Save.
+- Set the priority at a lower number than other rules so this will take precedence. Then Save.
 
 ![add rule](https://github.com/user-attachments/assets/104d55a6-0bea-4d97-825e-5a9ab7215c26)
 
@@ -255,15 +261,15 @@ Set the priority at a lower number than other rules so this will take precedence
 ![1 rule](https://github.com/user-attachments/assets/bfb20be2-67c3-469c-a5a8-ac2f2324610e)
 
 
-**New Rule**
+- New Rule**
 
 ![image](https://github.com/user-attachments/assets/419577d2-c2bf-4370-8e90-4dbd1f641433)
 
 
 
-**Back in Powershell press enter and look for "Request Timed Out".**
+- Back in Powershell press enter and look for "Request Timed Out".**
 
-**Back in Wireshark now you will only see request from the windows-vm.**
+- Back in Wireshark now you will only see requests from the windows-vm.**
 
 Since we stopped all incoming ICMP traffic for the linux-vm, our windows-vm can't ping it.
 
@@ -271,26 +277,118 @@ Since we stopped all incoming ICMP traffic for the linux-vm, our windows-vm can'
 ![ping stop](https://github.com/user-attachments/assets/37b12538-2268-49a9-ab50-99c66ffc3cb5)
 
 
-**Re-enable ICMP Traffic for linux-vm.**
+- Re-enable ICMP Traffic for linux-vm.**
 
-**Simply delete the new rule we create for ICMP**
+- Simply delete the new rule we create for ICMP**
 
 ![image](https://github.com/user-attachments/assets/ee7b6882-8769-4eea-9cc9-0dccd34c72b3)
 
-**Back in the Windows 10 VM, observe the ICMP traffic in WireShark and the command line Ping activity (should start working)**
+- Back in the Windows 10 VM, observe the ICMP traffic in WireShark and the command line Ping activity (should start working)**
 
-Once Azure resource manager recognizes the rule has been deleted, the traffic will resume.
+Once the Azure resource manager recognizes the rule has been deleted, the traffic will resume.
 
 ![ping return](https://github.com/user-attachments/assets/396892e1-007d-4b59-b380-6acec49831a2)
 
 
-**Stop Ping**
+- Stop Ping**
 
-Control + C
+**Control + C**
+
+Powershell will return to an empty command line.
+
+![Control C](https://github.com/user-attachments/assets/7465cfce-75a6-4f0d-bcba-db08a57f3575)
 
 
-**This is the end of the first 1/2 of this lab**
-**We will continue the rest of the lab on the next repository**
+
+**5) Observe SSH Traffic)**
+
+**SSH, or Secure Shell, is a network protocol that allows two computers to communicate securely over an unsecured network.**
+
+- Log back into the windows-vm
+
+- Back in Wireshark, start a packet capture up
+
+- Filter for SSH traffic only, As you can see there is nothing since we have not initiated as SSH command.
+
+
+
+
+![ssh](https://github.com/user-attachments/assets/f039d14d-26f9-401e-ab48-a20dd6b34224)
+
+
+
+
+- From your Windows 10 VM, “SSH into” your Ubuntu Virtual Machine (via its private IP address)
+
+- Open PowerShell, and type: ssh labuser@<private IP address> and press Enter.
+
+![labuser@10 0 0 5](https://github.com/user-attachments/assets/4399a72c-152b-4f7c-9d01-ccde2d08527f)
+
+- Type "yes" to continue connecting and press Enter.
+
+  ![yes](https://github.com/user-attachments/assets/3da50e8b-114c-4f8c-95b4-9d4536efdabc)
+
+
+
+
+- Type the linux-vm password and press Enter. The password will not appear, so type carefully.
+
+
+
+  ![password](https://github.com/user-attachments/assets/53374c51-a581-440c-9949-c9fd19fc3899)
+
+
+- Observe SSH traffic spam in WireShark
+
+![image](https://github.com/user-attachments/assets/09253818-f321-4f19-8006-4d5034498224)
+
+
+- Notice the prompt has changed to the linux-vm. We are now connected to that virtual machine via SSH.
+
+
+Now you can Enter commands for that computer such as:
+
+"hostname": name of that virtual machine
+
+"uname -a": info about the operating system
+
+
+![linux labuser](https://github.com/user-attachments/assets/b96fb214-c2d2-4051-b177-cbb8d68878d9)
+
+
+
+![hostname](https://github.com/user-attachments/assets/544e76e0-9f4d-46ef-95cd-f7c228066441)
+
+
+- Remember, SSH is encrypted. Any keystroke made in Powershell will generate traffic in Wireshark b/t the two virtual machines but is not discernible by others.
+
+  ![encrypted](https://github.com/user-attachments/assets/c96c41bf-9e3e-4f85-8729-3802aadc100e)
+
+
+- Another way to filter SSH traffic is typing "tcp.port==22". That's because SSH using TCP Port 22. 
+
+![tcp](https://github.com/user-attachments/assets/95c7be7c-175b-4c6e-af21-4ab8231a3dc0)
+
+
+ 
+-  Now Exit the SSH connection by typing ‘exit’ and pressing Enter.
+
+-  You will see the connection is closed.
+
+
+
+![exit](https://github.com/user-attachments/assets/84db98b6-3d5e-493d-948a-29c8d5732d08)
+
+
+-  Type "hostname" to see that you are now back in the windows-vm
+
+![windows-vm](https://github.com/user-attachments/assets/58f26dfc-1f2b-414d-afd2-2654375daa5b)
+
+
+
+**6) Observe DHCP Traffic**
+
+
 
 
 <br />
